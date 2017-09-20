@@ -2,7 +2,7 @@ angular.module('app.controllers', []).controller('IzdelekListController', functi
   $scope.izdelki = Izdelek.query(); //fetch all izdelki. Issues a GET to /api/vi/izdelki
 
   $scope.deleteIzdelek = function(izdelek) { // Delete a izdelek. Issues a DELETE to /api/v1/izdelek/:id
-    if (popupService.showPopup('Really delete this?')) {
+    if (popupService.showPopup('Ste prepričani da želite izbrisati izdelek?')) {
       izdelek.$delete(function() {
         $scope.izdelki = Izdelek.query(); 
         $state.go('izdelki');
