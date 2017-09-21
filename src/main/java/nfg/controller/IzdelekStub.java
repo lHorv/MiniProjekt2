@@ -10,7 +10,7 @@ import nfg.model.Izdelek;
 public class IzdelekStub {
 	private static Map<Long, Izdelek> izdelki = new HashMap<Long, Izdelek>();
 	private static Long idIndex = 3L;
-
+	
 	static {
 		Izdelek a = new Izdelek(1L, "Mleko", 2.99, "JE9283948728");
 		izdelki.put(1L, a);
