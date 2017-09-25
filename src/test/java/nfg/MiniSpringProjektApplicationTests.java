@@ -2,6 +2,7 @@ package nfg;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,6 +15,7 @@ import nfg.controller.Controller;
 public class MiniSpringProjektApplicationTests {
 
 	@Test
+	@Ignore
 	public void testApp() {
 		Controller c = new Controller();
 		String result = c.home();
