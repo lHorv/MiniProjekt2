@@ -28,8 +28,6 @@ public class IzdelekController {
 	@ApiOperation(value = "List all products")
 	@RequestMapping(value = "izdelki", method = RequestMethod.GET)
 	public List<Izdelek> list() {
-		//return InMemoryProductRepository.getInstance().list();
-		//return InMemoryProductRepository.getInstance().getAll();
 		return productRepository.getAll();
 		//return izdelekRepository.findAll();
 	}
@@ -37,8 +35,6 @@ public class IzdelekController {
 	@ApiOperation(value = "Add a product")
 	@RequestMapping(value = "izdelki", method = RequestMethod.POST)
 	public Izdelek create(@RequestBody Izdelek izdelek) {
-		//return InMemoryProductRepository.getInstance().create(izdelek);
-		//return InMemoryProductRepository.getInstance().add(izdelek);
 		return productRepository.add(izdelek);
 		//return izdelekRepository.saveAndFlush(izdelek);
 	}
@@ -46,8 +42,6 @@ public class IzdelekController {
     @ApiOperation(value = "Search a product with an ID", response = Izdelek.class)
 	@RequestMapping(value = "izdelki/{id}", method = RequestMethod.GET)
 	public Izdelek get(@PathVariable Long id) {
-		//return InMemoryProductRepository.getInstance().get(id);
-    	//return InMemoryProductRepository.getInstance().get(id);
     	return productRepository.get(id);
     	//return izdelekRepository.findOne(id);
 	}
@@ -55,8 +49,6 @@ public class IzdelekController {
 	@ApiOperation(value = "Update a product")
 	@RequestMapping(value = "izdelki/{id}", method = RequestMethod.PUT)
 	public Izdelek update(@PathVariable Long id, @RequestBody Izdelek izdelek) {
-		//return InMemoryProductRepository.getInstance().update(id, izdelek);
-		//return InMemoryProductRepository.getInstance().update(id, izdelek);
 		return productRepository.update(id, izdelek);
 		/*Izdelek existingIzdelek = izdelekRepository.findOne(id);
 		BeanUtils.copyProperties(izdelek, existingIzdelek);
@@ -66,11 +58,13 @@ public class IzdelekController {
 	@ApiOperation(value = "Delete a product")
 	@RequestMapping(value = "izdelki/{id}", method = RequestMethod.DELETE)
 	public Izdelek delete(@PathVariable Long id) {
-		//return InMemoryProductRepository.getInstance().delete(id);
-		//return InMemoryProductRepository.getInstance().remove(id);
 		return productRepository.remove(id);
 		/*Izdelek existingIzdelek = izdelekRepository.findOne(id);
 		izdelekRepository.delete(existingIzdelek);
 		return existingIzdelek;*/
+	}
+	
+	public InMemoryProductRepository getRepository() {
+		return productRepository;
 	}
 }

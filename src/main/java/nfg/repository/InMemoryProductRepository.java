@@ -12,18 +12,13 @@ import nfg.model.Izdelek;
 @Component
 public class InMemoryProductRepository implements IProductRepository {
 	
-	private Map<Long, Izdelek> izdelki = new HashMap<Long, Izdelek>();
-	private Long idIndex = 1L;
-
-	private static InMemoryProductRepository instance = new InMemoryProductRepository();
-
-    public static InMemoryProductRepository getInstance() {
-        return instance;
-    }
-
-    private InMemoryProductRepository() {
-    }
-
+	private Map<Long, Izdelek> izdelki = new HashMap<Long, Izdelek>(){{
+		put (1L, new Izdelek(1L, "Mleko", 2.99, "MLE192883"));
+		put (2L, new Izdelek(2L, "Kruh", 1.33, "KRU100029"));
+	}};
+	
+	private Long idIndex = 2L;
+	
 	@Override
 	public List<Izdelek> getAll() {
 		return new ArrayList<Izdelek>(izdelki.values());
