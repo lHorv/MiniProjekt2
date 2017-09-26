@@ -12,7 +12,7 @@ import nfg.controller.Controller;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class MiniSpringProjektApplicationTests {
+public class MiniSpringProjektApplicationTest {
 
 	@Test
 	@Ignore

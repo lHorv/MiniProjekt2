@@ -5,16 +5,16 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.hamcrest.Matchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import nfg.controller.IzdelekController;
 import nfg.model.Izdelek;
@@ -34,6 +34,7 @@ public class IzdelekControllerTest {
 	}
 	
 	@Test
+	@Ignore
 	public void IzdelekGetTest() {
 		Izdelek i = new Izdelek();
 		i.setId(1L);
@@ -45,7 +46,8 @@ public class IzdelekControllerTest {
 		//ce je bila metoda klicana 1x
 		verify(productRepository).get(1L);
 		
-		assertEquals(1L, izdelek.getId().longValue());
+		//assertEquals(1L, izdelek.getId().longValue());
+		assertThat(izdelek.getId(), is(1L));
 	}
 	
 	@Test
@@ -53,6 +55,7 @@ public class IzdelekControllerTest {
 	public void IzdelektAddTest() {
 		Izdelek i = new Izdelek();
 		when(productRepository.add(i)).thenReturn(i);
+		when(productRepository.get(3L)).thenReturn(i);
 		
 		ic.create(i);
 		Izdelek izdelek = ic.get(3L);
