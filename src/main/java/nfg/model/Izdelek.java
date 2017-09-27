@@ -1,5 +1,6 @@
 package nfg.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,8 +11,11 @@ public class Izdelek {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	@Column(name = "ime")
 	private String ime;
+	@Column(name = "cena")
 	private double cena;
+	@Column(name = "sifra")
 	private String sifra;
 
 	public Izdelek() {}
